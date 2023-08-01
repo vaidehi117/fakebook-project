@@ -38,3 +38,4 @@ SECRET=mysecretforjwt
 ```
 
 The app is configured, to use those respective key names for the database, jwt secret and aws bucket, of course you'll have your own values
+# fakebook-project

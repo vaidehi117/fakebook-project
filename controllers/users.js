@@ -2,24 +2,61 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
 
+//Helps generate random number for 
+//Our file names, so every file name is unique
+const { v4: uuisv4 } = require('uuid');
+//import the s3 constructor
+const S3 = require('aws-sdk/clients/s3');
+//initialize the S3 constructor so we have an object to talk to aws
+const s3 = new S3();
+
+//since everyone has a unique bucket name,
+//its a good use case for a .env variable
+//because we don't share that outside our computer
+const BUCKET_NAME = process.env.BUCKET_NAME
+
 module.exports = {
   signup,
   login
 };
 
 async function signup(req, res) {
-  console.log('hitting signup router');
-  console.log(req.body, req.file);
-  
-  const user = new User(req.body);
-  try {
-    await user.save();
-    const token = createJWT(user);
-    res.json({ token });
-  } catch (err) {
-    // Probably a duplicate email
-    res.status(400).json(err);
-  }
+  console.log(req.body, req.file, ' req.body', 'req.file');
+
+  // check if there is a file, if there isn't send back an error
+  if(!req.file) return res.status(400).json({error: "Please Submit a Photo"});
+
+  // this is the location of where our file will stored 
+  // on aws s3
+  const filePath = `fakebookproject/${ uuidv4() }-${req.file.originalname}`
+  // create the object we want to send to aws 
+  const params = {Bucket: BUCKET_NAME, Key: filePath, Body: req.file.buffer}
+
+  s3.upload(params, async function(err, data){
+    if(err){
+      console.log('===============================')
+      console.log(err, ' <- error from aws, Probably telling you your keys arent correct')
+      console.log('===============================')
+      res.status(400).json({error: 'error from aws, check your terminal'})
+    }
+
+    // if s3 upload was successful create the user and store the file location
+    req.body.photoUrl = data.Location; // data.Location is what we get back from aws of where Our file is stored
+    const user = new User(req.body);
+    try {
+      await user.save();
+      const token = createJWT(user);
+      res.json({ token });
+      // this response gets process by the client 
+      // utils/userService signup function, inside of the .thens
+    } catch (err) {
+      console.log(err)
+      // Probably a duplicate email
+      console.log(err)
+      res.status(400).json(err);
+    }
+
+  })
 }
 
 async function login(req, res) {

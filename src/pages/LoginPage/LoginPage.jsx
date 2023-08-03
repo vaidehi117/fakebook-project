@@ -25,7 +25,7 @@ export default function LoginPage(props) {
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
-    e.preventDefult();
+    e.preventDefault();
 
     try {
       //Making the http request to the server
@@ -53,24 +53,38 @@ export default function LoginPage(props) {
         <Header as='h2' color='blue' textAlign='center'>
           <Image src='https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png' /> Log-in to your account
         </Header>
-        <Form size='large'>
+        <Form size='large' onSubmit={handleSubmit}>
           <Segment stacked>
-            <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' />
+            <Form.Input
+              fluid icon='user'
+              iconPosition='left'
+              type="email"
+              name="email"
+              placeholder="E-mail address"
+              value={state.email}
+              onChange={handleChange}
+              required
+            />
             <Form.Input
               fluid
               icon='lock'
               iconPosition='left'
+              name="password"
               placeholder='Password'
               type='password'
+              value={state.password}
+              onChange={handleChange}
+              required
             />
             <Button color='blue' fluid size='large'>
               Login
             </Button>
           </Segment>
+          <Message>
+            New to us? <Link to="/signup">Sign up</Link>
+          </Message>
+          {error ? <ErrorMessage error={error} /> : null}
         </Form>
-        <Message>
-          New to us? <a href='/signup'>Sign Up</a>
-        </Message>
       </Grid.Column>
     </Grid>
   );

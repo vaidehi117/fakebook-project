@@ -111,7 +111,7 @@ export default function SignUpPage() {
                         <Form.TextArea
                             label="bio"
                             name="bio"
-                            placeholder="Tell us more about you!"
+                            placeholder="What's on your mind!"
                             onChange={handleChange}
                         />
                         <Form.Field>

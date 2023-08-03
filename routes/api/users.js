@@ -6,18 +6,26 @@ const usersCtrl = require("../../controllers/users");
 const multer = require('multer');
 const upload = multer()
 
-
 /*---------- Public Routes ----------*/
+// Http request
+// POST /api/users/signup
+
+// we get 'photo' in upload single from the key name
+// on the formdata that contains the file
+// in this case, this line of code in signupPage
+//	formData.append('photo', selectedFile);
 router.post("/signup", upload.single('photo'), usersCtrl.signup);
 router.post("/login", usersCtrl.login);
 
-/*---------- Protected Routes ----------*/
+// this is params for the api request coming from the react side
+router.get('/:username', usersCtrl.profile);
+
 
 module.exports = router;
 
 
 
-/*---------- Protected Routes ----------*/
+
 
 
 

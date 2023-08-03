@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const postCtrl = require('../../controllers/posts');
+const postsCtrl = require('../../controllers/posts');
 
-//Require these for file uploads!
+// require these for file uploads!
 const multer = require('multer');
 const upload = multer()
 
-/*----------Public Routes----------*/
-//api/posts
-router.post('/', postCtrl.create);
-router.get('/', postCtrl.index);
+/*---------- Public Routes ----------*/
+// /api/posts 
+router.post('/', upload.single('photo'), postsCtrl.create);
+router.get('/', postsCtrl.index)
 
 module.exports = router;

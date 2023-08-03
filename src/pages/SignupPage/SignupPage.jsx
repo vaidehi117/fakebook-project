@@ -132,7 +132,7 @@ export default function SignUpPage() {
                                 onChange={handleFileInput}
                             />
                         </Form.Field>
-                        <Button type="submit" color='blue' className="btn">
+                        <Button type="submit" color='blue' className="btn" fluid size='large'>
                             Signup
                         </Button>
                     </Segment>

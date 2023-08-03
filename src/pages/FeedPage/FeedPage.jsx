@@ -19,7 +19,10 @@ export default function FeedPage() {
     //this way when we get a response from the server we can easily update the state, since it's in the component
     async function handleAddPost(data){
         try{
-
+            //This is the fetch function from the post utils
+            const responseFromTheServer = await postsApi.getAll();
+            console.log(responseFromTheServer);
+            setPosts(responseFromTheServer.posts);
         }catch(err){
             console.log(err, 'err in the handleAddPost FeedPage');
             setError('Error Creating a Post!');
@@ -30,7 +33,7 @@ export default function FeedPage() {
         <Grid centered>
             <Grid.Row>
                 <Grid.Column>
-                    <Header handleLogout={handleLogout} user={user} />
+                    <Header />
                 </Grid.Column>
             </Grid.Row>
             <Grid.Row>
@@ -40,7 +43,7 @@ export default function FeedPage() {
             </Grid.Row>
             <Grid.Row>
                 <Grid.Column style={{ maxWidth: 450 }}>
-                    <PostGallery posts={posts} itemsPerRow={1} isProfile={false} addLike={addLike} removeLike={removeLike} user={user}/>
+                    <PostGallery />
                 </Grid.Column>
             </Grid.Row>
         </Grid>

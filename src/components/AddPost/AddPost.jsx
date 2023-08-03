@@ -21,7 +21,7 @@ export default function AddPost() {
     function handleChange(e){
         setState({
             ...state,
-            [e.taget.name]: e.target.value
+            [e.target.name]: e.target.value
         })
     }
 
@@ -43,7 +43,7 @@ export default function AddPost() {
                     className="form-control"
                     name="caption"
                     value={state.caption}
-                    placeholder="What's on your pups mind?"
+                    placeholder="Write a caption..."
                     onChange={handleChange}
                     required
                 />
@@ -54,8 +54,8 @@ export default function AddPost() {
                     placeholder="upload image"
                     onChange={handleFileInput}
                 />
-                <Button type="submit" color='blue' className="btn">
-                    ADD POST
+                <Button type="submit" color='blue' className="btn"fluid size='large'>
+                    SHARE
                 </Button>
             </Form>
         </Segment>

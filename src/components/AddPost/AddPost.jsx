@@ -33,7 +33,7 @@ export default function AddPost() {
         formData.append('photo',selectedFile)
 
         //call handleAddPost which calls our postsApi.create function in the utils folder
-        handleAddPost(formData)
+        // handleAddPost(formData)
     }
 
     return (

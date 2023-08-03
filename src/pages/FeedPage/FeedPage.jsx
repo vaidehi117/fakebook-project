@@ -11,21 +11,21 @@ export default function FeedPage() {
     //The reasons we are setting posts state, is because then we can pass that data to the postGallery
     //Where it will be rendered
     const [posts, setPosts] = useState([]);
-    const[error, setError] = useState('');
+    const [error, setError] = useState('');
 
     //CRUD
     //we will call this function in the handlesubmit of the AddPost, and pass to it
     //the formData we created 
     //this way when we get a response from the server we can easily update the state, since it's in the component
-    async function handleAddPost(data){
-        try{
-            //This is the fetch function from the post utils
-            const responseFromTheServer = await postsApi.getAll();
-            console.log(responseFromTheServer);
-            setPosts(responseFromTheServer.posts);
-        }catch(err){
-            console.log(err, 'err in the handleAddPost FeedPage');
-            setError('Error Creating a Post!');
+    async function handleAddPost(data) {
+        try {
+            const responseData = await postsApi.create(data);
+            console.log(responseData, " <- response from server in handleAddPost");
+            setPosts([responseData.data, ...posts]); // emptying the previous posts in to the new
+            // and then adding the new one we just created to the front (response.data)
+        } catch (err) {
+            console.log(err, " err in handleAddPost FeedPage");
+            setError("Error Creating a Post! Please try again");
         }
     }
 

@@ -78,21 +78,28 @@ export default function SignUpPage() {
                 <Form autoComplete="off" onSubmit={handleSubmit}>
                     <Segment stacked>
                         <Form.Input
+                            fluid icon='user'
+                            iconPosition='left'
                             name="username"
-                            placeholder="username"
+                            placeholder="Username"
                             value={state.username}
                             onChange={handleChange}
                             required
                         />
                         <Form.Input
+                            fluid icon='user'
+                            iconPosition='left'
                             type="email"
                             name="email"
-                            placeholder="email"
+                            placeholder="E-mail address"
                             value={state.email}
                             onChange={handleChange}
                             required
                         />
                         <Form.Input
+                            fluid
+                            icon='lock'
+                            iconPosition='left'
                             name="password"
                             type="password"
                             placeholder="password"
@@ -101,6 +108,9 @@ export default function SignUpPage() {
                             required
                         />
                         <Form.Input
+                            fluid
+                            icon='lock'
+                            iconPosition='left'
                             name="passwordConf"
                             type="password"
                             placeholder="Confirm Password"
@@ -109,7 +119,7 @@ export default function SignUpPage() {
                             required
                         />
                         <Form.TextArea
-                            label="bio"
+                            label="Bio"
                             name="bio"
                             placeholder="What's on your mind!"
                             onChange={handleChange}

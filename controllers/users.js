@@ -28,7 +28,7 @@ async function signup(req, res) {
 
   // this is the location of where our file will stored 
   // on aws s3
-  const filePath = `fakebookproject/${ uuidv4() }-${req.file.originalname}`
+  const filePath = `fakebook/${ uuidv4() }-${req.file.originalname}`
   // create the object we want to send to aws 
   const params = {Bucket: BUCKET_NAME, Key: filePath, Body: req.file.buffer}
 

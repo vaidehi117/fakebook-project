@@ -6,7 +6,7 @@ import {
     Segment
 } from "semantic-ui-react";
 
-export default function AddPost() {
+export default function AddPost({handleAddPost}) {
 
     //Create the state
     const [state, setState] = useState({
@@ -33,7 +33,7 @@ export default function AddPost() {
         formData.append('photo',selectedFile)
 
         //call handleAddPost which calls our postsApi.create function in the utils folder
-        // handleAddPost(formData)
+        handleAddPost(formData)
     }
 
     return (

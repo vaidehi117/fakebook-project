@@ -10,7 +10,7 @@ import {
     Message,
     Segment,
 } from "semantic-ui-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function SignUpPage() {
 
@@ -25,8 +25,8 @@ export default function SignUpPage() {
     const [selectedFile, setSelectedFile] = useState('');
 
     // navigate is a function that just takes a path
-	// the path should match a route defined in the App.js
-	const navigate = useNavigate()
+    // the path should match a route defined in the App.js
+    const navigate = useNavigate()
 
     function handleChange(e) {
         setState({
@@ -135,6 +135,9 @@ export default function SignUpPage() {
                         <Button type="submit" color='blue' className="btn" fluid size='large'>
                             Signup
                         </Button>
+                        {/* <Message>
+                            Already have a acoount <Link to="/login">Log In</Link>
+                        </Message> */}
                     </Segment>
                     {error ? <ErrorMessage error={error} /> : null}
                 </Form>

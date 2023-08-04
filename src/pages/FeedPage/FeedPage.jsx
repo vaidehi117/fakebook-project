@@ -7,7 +7,7 @@ import { Grid } from "semantic-ui-react";
 import * as postsApi from "../../utils/postApi";
 
 
-export default function FeedPage() {
+export default function FeedPage({ user, handleLogout }) {
 
     //The reasons we are setting posts state, is because then we can pass that data to the postGallery
     //Where it will be rendered
@@ -19,6 +19,19 @@ export default function FeedPage() {
     async function addLike(postId) {
         try {
             const response = await likesApi.create(postId);
+            // to update state we are just going to refetch the posts, because they will the updated
+            // likes
+            getPosts(); // this funciton updates state
+
+        } catch (err) {
+            setError('error creating like')
+            console.log(err, ' error')
+        }
+    }
+
+    async function removeLike(likeId) {
+        try {
+            const response = await likesApi.removeLike(likeId);
             // to update state we are just going to refetch the posts, because they will the updated
             // likes
             getPosts(); // this funciton updates state
@@ -44,6 +57,22 @@ export default function FeedPage() {
             setError("Error Creating a Post! Please try again");
         }
     }
+
+    // C(R)UD
+    async function getPosts() {
+        try {
+            const responseFromTheServer = await postsApi.getAll(); // this is the fetch function from post utils
+            console.log(responseFromTheServer);
+            setPosts(responseFromTheServer.posts);
+        } catch (err) {
+            console.log(err, " err in getPosts");
+            setError("Error Fetching Posts, Check terminal");
+        }
+    }
+
+    useEffect(() => {
+        getPosts();
+    }, []); // empty array says run the use effect once when the page loads up!
 
     return (
         <Grid centered>

@@ -21,7 +21,7 @@ module.exports = {
 function create(req, res) {
     console.log(req.body, req.file, " < req.body, req.file in posts/api create");
     //Check if there is a file, if there isn't send back an error
-    if (!req.files) return res.status(400).json({ error: "Please Submit a Photo" });
+    if (!req.file) return res.status(400).json({ error: "Please Submit a Photo" });
 
     //This is the location of where our file will stored
     //On AWS s3

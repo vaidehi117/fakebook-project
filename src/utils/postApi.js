@@ -20,7 +20,7 @@ export function create(data) {
         if (responseFromTheServer.ok) return responseFromTheServer.json() // so if everything went well in the response return 
         //the parsed json to where we called the function
 
-        throw new Error('Something went wrong in create Post'); // this will go to the catch block when we call the function in the AddPostPuppyForm
+        throw new Error('Something went wrong in create Post'); // this will go to the catch block when we call the function in the AddPost
         // handleSubmit
     })
 } 
@@ -40,7 +40,7 @@ export function getAll(){
 		if(responseFromTheServer.ok) return responseFromTheServer.json() // so if everything went well in the response return 
 		//the parsed json to where we called the function
 
-		throw new Error('Something went wrong in getAll posts, check the terminal!'); // this will go to the catch block when we call the function in the AddPostPuppyForm
+		throw new Error('Something went wrong in getAll posts, check the terminal!'); // this will go to the catch block when we call the function in the AddPost
 		// handleSubmit
 	})
 }

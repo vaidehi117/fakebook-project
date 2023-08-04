@@ -6,6 +6,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import SignUpPage from "./pages/SignupPage/SignupPage";
 import userService from "./utils/userService";
 import FeedPage from "./pages/FeedPage/FeedPage";
+import ProfilePage from "./pages/ProfilePage/Profilepage";
 
 // ANY Component rendered by a ROUTE, goes in the pages folder!
 // Client side routing, Just for showing or hiding components based on the address
@@ -46,6 +47,7 @@ export default function App() {
       <Route path="/" element={<FeedPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
       <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
       <Route path="/signup" element={<SignUpPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
+      <Route path="/:username" element={<ProfilePage user={user} handleLogout={handleLogout}/> } />
     </Routes>
   );
 }

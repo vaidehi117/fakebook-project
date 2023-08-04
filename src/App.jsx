@@ -6,7 +6,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import SignUpPage from "./pages/SignupPage/SignupPage";
 import userService from "./utils/userService";
 import FeedPage from "./pages/FeedPage/FeedPage";
-import ProfilePage from "./pages/ProfilePage/Profilepage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 // ANY Component rendered by a ROUTE, goes in the pages folder!
 // Client side routing, Just for showing or hiding components based on the address

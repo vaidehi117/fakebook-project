@@ -18,7 +18,7 @@ router.post("/signup", upload.single('photo'), usersCtrl.signup);
 router.post("/login", usersCtrl.login);
 
 // this is params for the api request coming from the react side
-// router.get('/:username', usersCtrl.profile);
+router.get('/:username', usersCtrl.profile);
 
 
 module.exports = router;

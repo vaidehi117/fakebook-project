@@ -25,7 +25,7 @@ function create(req, res) {
 
     //This is the location of where our file will stored
     //On AWS s3
-    const filePath = `pupstagram65/posts/${uuidv4()}-${req.file.originalname}`;
+    const filePath = `fakebook/posts/${uuidv4()}-${req.file.originalname}`;
     //Create the object we want to send to AWS
     const params = { Bucket: BUCKET_NAME, Key: filePath, Body: req.file.buffer };
 

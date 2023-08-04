@@ -40,17 +40,28 @@ export default function SignUpPage() {
         setSelectedFile(e.target.files[0])
     }
 
-    async function handleSubmit(e) {
-
+    async function handleSubmit(e){
         e.preventDefault();
+
+        // ANYTIME YOU'RE SENDING A FILE TO THE SERVER
+        // You must create formdata!
+        // This needs to be done because the http request
+        // will be sent in two parts, the text, and the file
         const formData = new FormData();
-        //Key on req.file would be photo
+        // key on req.file would be photo, 
         formData.append('photo', selectedFile);
         // req.body formdata
         formData.append('username', state.username)
         formData.append('email', state.email)
-        formData.append('password', state.password)
+        formData.append('password', state.password)	
         formData.append('bio', state.bio)
+
+        // this for loop does the same thing as the code above ^^^
+        // for (let key in state){
+        // 	formData.append(key, state[fieldName])
+        // }
+
+
 
         try {
             // this line of code is making the fetch request to the server
@@ -62,11 +73,11 @@ export default function SignUpPage() {
             navigate('/');
             handleSignUpOrLogin(); // this function comes from the APP component
 
-        } catch (err) {
-            //Invalid user data
-            console.log(err, 'err in handleSubmit');
+        } catch(err){
+            console.log(err, ' err in handleSubmit');
             setError('Check your terminal for your error and the chrome console!')
         }
+
     }
 
     return (
@@ -135,9 +146,7 @@ export default function SignUpPage() {
                         <Button type="submit" color='blue' className="btn" fluid size='large'>
                             Signup
                         </Button>
-                        {/* <Message>
-                            Already have a acoount <Link to="/login">Log In</Link>
-                        </Message> */}
+            
                     </Segment>
                     {error ? <ErrorMessage error={error} /> : null}
                 </Form>

@@ -21,6 +21,7 @@ module.exports = {
 };
 
 async function signup(req, res) {
+
   console.log(req.body, req.file, ' req.body', 'req.file');
 
   // check if there is a file, if there isn't send back an error
@@ -28,7 +29,7 @@ async function signup(req, res) {
 
   // this is the location of where our file will stored 
   // on aws s3
-  const filePath = `fakebook/${ uuidv4() }-${req.file.originalname}`
+  const filePath = `fakebook/${uuisv4()}-${req.file.originalname}`
   // create the object we want to send to aws 
   const params = {Bucket: BUCKET_NAME, Key: filePath, Body: req.file.buffer}
 

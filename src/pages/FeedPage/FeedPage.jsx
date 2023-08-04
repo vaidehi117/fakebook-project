@@ -5,7 +5,7 @@ import PostGallery from "../../components/PostGallery/PostGallery";
 import { Grid } from "semantic-ui-react";
 //This will import all the functions from postApi, and attach to an object call postsApi
 import * as postsApi from "../../utils/postApi";
-
+import * as likesApi from "../../utils/likesApi"
 
 export default function FeedPage({ user, handleLogout }) {
 
@@ -13,6 +13,34 @@ export default function FeedPage({ user, handleLogout }) {
     //Where it will be rendered
     const [posts, setPosts] = useState([]);
     const [error, setError] = useState('');
+
+    // EVERY TIME WE UPDATE STATE here, We will first make http request to the server
+    // to try and perform some CRUD operation.
+    async function addLike(postId) {
+        try {
+            const response = await likesApi.create(postId);
+            // to update state we are just going to refetch the posts, because they will the updated
+            // likes
+            getPosts(); // this funciton updates state
+
+        } catch (err) {
+            setError('error creating like')
+            console.log(err, ' error')
+        }
+    }
+
+    async function removeLike(likeId) {
+        try {
+            const response = await likesApi.removeLike(likeId);
+            // to update state we are just going to refetch the posts, because they will the updated
+            // likes
+            getPosts(); // this funciton updates state
+
+        } catch (err) {
+            setError('error creating like')
+            console.log(err, ' error')
+        }
+    }
 
     //CRUD
     //we will call this function in the handlesubmit of the AddPost, and pass to it
@@ -34,7 +62,7 @@ export default function FeedPage({ user, handleLogout }) {
     async function getPosts() {
         try {
             // this is the fetch function from post utils
-            const responseFromTheServer = await postsApi.getAll(); 
+            const responseFromTheServer = await postsApi.getAll();
             console.log(responseFromTheServer);
             setPosts(responseFromTheServer.posts);
         } catch (err) {
@@ -61,7 +89,7 @@ export default function FeedPage({ user, handleLogout }) {
             </Grid.Row>
             <Grid.Row>
                 <Grid.Column style={{ maxWidth: 450 }}>
-                    <PostGallery posts={posts} />
+                    <PostGallery posts={posts} itemsPerRow={1} isProfile={false} addLike={addLike} removeLike={removeLike} user={user} />
                 </Grid.Column>
             </Grid.Row>
         </Grid>

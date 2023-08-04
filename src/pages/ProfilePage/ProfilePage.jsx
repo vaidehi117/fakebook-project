@@ -5,6 +5,7 @@ import ProfileBio from '../../components/ProfileBio/Profilebio';
 import PostGallery from '../../components/PostGallery/PostGallery';
 import Header from '../../components/Header/Header';
 import userService from '../../utils/userService';
+import * as likesApi from '../../utils/likesApi';
 
 export default function ProfilePage() {
 
@@ -17,6 +18,34 @@ export default function ProfilePage() {
     //  <Route path="/:username" element={<ProfilePage />} />
     const { username } = useParams();
     console.log(username);
+
+    // EVERY TIME WE UPDATE STATE here, We will first make http request to the server
+    // to try and perform some CRUD operation.
+    async function addLike(postId) {
+        try {
+            const response = await likesApi.create(postId);
+            // to update state we are just going to refetch the posts, because they will the updated
+            // likes
+            getProfile(); // this funciton updates state
+
+        } catch (err) {
+            setError('error creating like')
+            console.log(err, ' error')
+        }
+    }
+
+    async function removeLike(likeId) {
+        try {
+            const response = await likesApi.removeLike(likeId);
+            // to update state we are just going to refetch the posts, because they will the updated
+            // likes
+            getProfile(); // this funciton updates state
+
+        } catch (err) {
+            setError('error creating like')
+            console.log(err, ' error')
+        }
+    }
 
     async function getProfile() {
         //Make the api call
@@ -63,7 +92,7 @@ export default function ProfilePage() {
             </Grid.Row>
             <Grid.Row centered>
                 <Grid.Column style={{ maxWidth: 750 }}>
-                    <PostGallery />
+                    <PostGallery posts={posts} itemsPerRow={1} isProfile={true} user={user} addLike={addLike} removeLike={removeLike}/>
                 </Grid.Column>
             </Grid.Row>
         </Grid>

@@ -13,7 +13,7 @@ import {
 import userService from '../../utils/userService';
 import { Link, useNavigate } from 'react-router-dom';
 
-export default function LoginPage(props) {
+export default function LoginPage({ handleSignUpOrLogin }) {
 
   const [state, setState] = useState({
     email: '',

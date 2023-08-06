@@ -21,7 +21,7 @@ export default function FeedPage({ user, handleLogout }) {
             const response = await likesApi.create(postId);
             // to update state we are just going to refetch the posts, because they will the updated
             // likes
-            getPosts(); // this funciton updates state
+            getPosts(); //This funciton updates state
 
         } catch (err) {
             setError('error creating like')
@@ -32,9 +32,9 @@ export default function FeedPage({ user, handleLogout }) {
     async function removeLike(likeId) {
         try {
             const response = await likesApi.removeLike(likeId);
-            // to update state we are just going to refetch the posts, because they will the updated
+            //To update the state we are just going to refetch the posts, because they will the updated
             // likes
-            getPosts(); // this funciton updates state
+            getPosts(); //This funciton updates state
 
         } catch (err) {
             setError('error creating like')
@@ -50,18 +50,18 @@ export default function FeedPage({ user, handleLogout }) {
         try {
             const responseData = await postsApi.create(data);
             console.log(responseData, " <- response from server in handleAddPost");
-            setPosts([responseData.data, ...posts]); // emptying the previous posts in to the new
-            // and then adding the new one we just created to the front (response.data)
+            setPosts([responseData.data, ...posts]); //Emptying the previous posts in to the new
+            //And then adding the new one we just created to the front (response.data)
         } catch (err) {
             console.log(err, " err in handleAddPost FeedPage");
             setError("Error Creating a Post! Please try again");
         }
     }
 
-    // C(R)UD
+    //C(R)UD
     async function getPosts() {
         try {
-            // this is the fetch function from post utils
+            //This is the fetch function from post utils
             const responseFromTheServer = await postsApi.getAll();
             console.log(responseFromTheServer);
             setPosts(responseFromTheServer.posts);
@@ -73,13 +73,13 @@ export default function FeedPage({ user, handleLogout }) {
 
     useEffect(() => {
         getPosts();
-    }, []); // empty array says run the use effect once when the page loads up!
+    }, []); //Empty array says run the use effect once when the page loads up!
 
     return (
         <Grid centered>
             <Grid.Row>
                 <Grid.Column>
-                    <Header />
+                    <Header handleLogout={handleLogout} user={user} />
                 </Grid.Column>
             </Grid.Row>
             <Grid.Row>

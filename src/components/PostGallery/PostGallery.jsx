@@ -7,7 +7,7 @@ export default function PostGallery({ posts, itemsPerRow, isProfile, addLike, re
     })
 
     return (
-        <Card.Group itemsPerRow={1}>
+        <Card.Group itemsPerRow={itemsPerRow}>
             {postCards}
         </Card.Group>
     )

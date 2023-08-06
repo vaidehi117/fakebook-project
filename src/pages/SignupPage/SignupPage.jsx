@@ -10,9 +10,9 @@ import {
     Message,
     Segment,
 } from "semantic-ui-react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export default function SignUpPage() {
+export default function SignUpPage({ handleSignUpOrLogin }) {
 
     const [state, setState] = useState({
         username: '',
@@ -22,6 +22,7 @@ export default function SignUpPage() {
         bio: ''
     })
     const [error, setError] = useState('');
+    //This state will handle the file upload 
     const [selectedFile, setSelectedFile] = useState('');
 
     // navigate is a function that just takes a path
@@ -36,44 +37,37 @@ export default function SignUpPage() {
     }
 
     function handleFileInput(e) {
-        console.log(e.target.files);
+        // console.log(e.target.files);
         setSelectedFile(e.target.files[0])
     }
 
-    async function handleSubmit(e){
+    async function handleSubmit(e) {
         e.preventDefault();
 
-        // ANYTIME YOU'RE SENDING A FILE TO THE SERVER
-        // You must create formdata!
-        // This needs to be done because the http request
-        // will be sent in two parts, the text, and the file
+        //ANYTIME YOU'RE SENDING A FILE TO THE SERVER
+        //You must create formdata!
+        //This needs to be done because the http request
+        //Will be sent in two parts, the text, and the file
         const formData = new FormData();
         // key on req.file would be photo, 
         formData.append('photo', selectedFile);
         // req.body formdata
         formData.append('username', state.username)
         formData.append('email', state.email)
-        formData.append('password', state.password)	
+        formData.append('password', state.password)
         formData.append('bio', state.bio)
 
-        // this for loop does the same thing as the code above ^^^
-        // for (let key in state){
-        // 	formData.append(key, state[fieldName])
-        // }
-
-
-
         try {
-            // this line of code is making the fetch request to the server
-            // and sending our state object
-            // this is calling the signup fetch function defined in our utils/userService
+            //This line of code is making the fetch request to the server and sending our state object
+            //This is calling the signup fetch function defined in our utils/userService
             const signUp = await userService.signup(formData)
             console.log(signUp)
-            // navigate the user to the home page!
-            navigate('/');
-            handleSignUpOrLogin(); // this function comes from the APP component
 
-        } catch(err){
+            //Navigate the user to the home page!
+            navigate('/');
+            handleSignUpOrLogin(); //This function comes from the APP component
+
+        } catch (err) {
             console.log(err, ' err in handleSubmit');
             setError('Check your terminal for your error and the chrome console!')
         }
@@ -146,7 +140,7 @@ export default function SignUpPage() {
                         <Button type="submit" color='blue' className="btn" fluid size='large'>
                             Signup
                         </Button>
-            
+
                     </Segment>
                     {error ? <ErrorMessage error={error} /> : null}
                 </Form>

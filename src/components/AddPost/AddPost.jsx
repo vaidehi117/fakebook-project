@@ -6,7 +6,7 @@ import {
     Segment
 } from "semantic-ui-react";
 
-export default function AddPost({handleAddPost}) {
+export default function AddPost({ handleAddPost }) {
 
     //Create the state
     const [state, setState] = useState({
@@ -18,7 +18,7 @@ export default function AddPost({handleAddPost}) {
         setSelectedFile(e.target.files[0])
     }
 
-    function handleChange(e){
+    function handleChange(e) {
         setState({
             ...state,
             [e.target.name]: e.target.value
@@ -30,9 +30,9 @@ export default function AddPost({handleAddPost}) {
         //Since we are sending file, prepare the object ad FormData to send to the server
         const formData = new FormData()
         formData.append('caption', state.caption)
-        formData.append('photo',selectedFile)
+        formData.append('photo', selectedFile)
 
-        //call handleAddPost which calls our postsApi.create function in the utils folder
+        //Call handleAddPost which calls our postsApi.create function in the utils folder
         handleAddPost(formData)
     }
 
@@ -54,7 +54,7 @@ export default function AddPost({handleAddPost}) {
                     placeholder="upload image"
                     onChange={handleFileInput}
                 />
-                <Button type="submit" color='blue' className="btn"fluid size='large'>
+                <Button type="submit" color='blue' className="btn" fluid size='large'>
                     SHARE
                 </Button>
             </Form>

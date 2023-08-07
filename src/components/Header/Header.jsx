@@ -1,15 +1,31 @@
-import { Header, Segment, Image, Icon } from "semantic-ui-react";
+import { Grid, Header, Segment, Image, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 export default function PageHeader({ user, handleLogout }) {
   return (
-    <Segment clearing>
+    <Segment clearing color='blue'>
       <Header as="h2" floated="right">
         <Link to="/">
           <Icon name="sign-out"></Icon>
         </Link>
         <Link to="/login" onClick={handleLogout}>
           Logout
+        </Link>
+      </Header>
+      <Header as="h2" floated="right">
+        <Link>
+          <Icon name="inbox"></Icon>
+        </Link>
+        <Link>
+          Chats
+        </Link>
+      </Header>
+      <Header as="h2" floated="right">
+        <Link to="/">
+          <Icon name="home"></Icon>
+        </Link>
+        <Link to="/" >
+          Feed
         </Link>
       </Header>
       <Header as="h2" floated="left">

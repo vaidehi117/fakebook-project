@@ -8,7 +8,7 @@
 
 Signup Page
 
-![Alt text](<Screenshot from 2023-08-06 22-56-48.png>)
+![Alt text](<Screenshot from 2023-08-07 00-02-52.png>)
 
 Login Page
 

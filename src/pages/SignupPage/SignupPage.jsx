@@ -141,11 +141,10 @@ export default function SignUpPage({ handleSignUpOrLogin }) {
                         <Button type="submit" color='blue' className="btn" fluid size='large'>
                             Signup
                         </Button>
-                        <Message>
-                            Already have an account? <Link to="/login">Login</Link>
-                        </Message>
-
                     </Segment>
+                    <Message>
+                        Already have an account? <Link to="/login">Login</Link>
+                    </Message>
                     {error ? <ErrorMessage error={error} /> : null}
                 </Form>
             </Grid.Column>

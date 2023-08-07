@@ -17,8 +17,15 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       unique: true
     },
+
     password: String,
     photoUrl: String, //String from aws!
+    Bio: {
+      type: String,
+      required: true,
+      lowercase: true,
+      unique: true,
+    }
   },
   {
     timestamps: true,
@@ -42,8 +49,7 @@ userSchema.set("toObject", {
   },
 });
 
-// DO NOT DEFINE instance methods with arrow functions,
-// they prevent the binding of this
+
 userSchema.pre("save", function (next) {
   // 'this' will be set to the current document
   const user = this;

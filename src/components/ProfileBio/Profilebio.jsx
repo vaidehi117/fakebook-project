@@ -1,6 +1,7 @@
 import { Image, Grid, Segment } from 'semantic-ui-react';
 
 export default function ProfileBio({ user }) {
+    console.log('Profile bio',user)
     return (
         <Grid textAlign='center' columns={2}>
             <Grid.Row>

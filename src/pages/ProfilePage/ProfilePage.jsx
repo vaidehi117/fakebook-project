@@ -87,7 +87,7 @@ export default function ProfilePage({ user, handleLogout }) {
             </Grid.Row>
             <Grid.Row>
                 <Grid.Column>
-                    <ProfileBio user={user}/>
+                    <ProfileBio user={userState}/>
                 </Grid.Column>
             </Grid.Row>
             <Grid.Row centered>

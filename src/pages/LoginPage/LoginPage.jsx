@@ -12,6 +12,7 @@ import {
 } from "semantic-ui-react";
 import userService from '../../utils/userService';
 import { Link, useNavigate } from 'react-router-dom';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 
 export default function LoginPage({ handleSignUpOrLogin }) {
 

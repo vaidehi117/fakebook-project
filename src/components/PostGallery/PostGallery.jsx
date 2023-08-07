@@ -1,4 +1,5 @@
 import { Card } from 'semantic-ui-react';
+import ProfileBio from '../ProfileBio/Profilebio';
 import PostCard from '../PostCard/PostCard';
 
 export default function PostGallery({ posts, itemsPerRow, isProfile, addLike, removeLike, user }) {

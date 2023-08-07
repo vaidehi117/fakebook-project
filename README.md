@@ -26,6 +26,5 @@ Login Page
 - Mongoose
 
 # Next Steps: 
-- Make it easier to navigate thorough the app
 - Implement the comment for the post 
 - Wants to be able to edit the comment

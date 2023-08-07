@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema(
       unique: true
     },
     password: String,
-    photoUrl: String, // string from aws!
+    photoUrl: String, //String from aws!
   },
   {
     timestamps: true,
@@ -27,14 +27,14 @@ const userSchema = new mongoose.Schema(
 
 userSchema.set("toJSON", {
   transform: function (doc, ret) {
-    // remove the password property when serializing doc to JSON
+    //Remove the password property when serializing doc to JSON
     delete ret.password;
     return ret;
   },
 });
-/// in controller
+//In controller
 
-// this is if you populate the user
+//This is if you populate the user
 userSchema.set("toObject", {
   transform: (doc, ret, opt) => {
     delete ret.password;
@@ -61,7 +61,7 @@ userSchema.pre("save", function (next) {
 
 userSchema.methods.comparePassword = function (tryPassword, cb) {
   console.log(cb, " this is cb");
-  // 'this' represents the document that you called comparePassword on
+  //'this' represents the document that you called comparePassword on
   bcrypt.compare(tryPassword, this.password, function (err, isMatch) {
     if (err) return cb(err);
 

@@ -3,9 +3,9 @@ const Post = require("../models/post");
 //Helps generate random number for our file names
 //So every file name is unique
 const { v4: uuidv4 } = require("uuid");
-// import the s3 constructor
+//import the s3 constructor
 const S3 = require("aws-sdk/clients/s3");
-// initialize the S3 constructor so we have an object to talk to aws
+//Initialize the S3 constructor so we have an object to talk to aws
 const s3 = new S3();
 
 //Since everyone has a unique bucket name,
@@ -49,9 +49,9 @@ function create(req, res) {
             });
 
             //Populating on a mongoose document! this gives us the user object
-            await post.populate("user"); 
+            await post.populate("user");
             //This response will show up in the feedPage in   const responseData = await postsApi.create(post);
-            res.status(201).json({ data: post }); // <- this is what responseData should be
+            res.status(201).json({ data: post }); //<- this is what responseData should be
         } catch (err) {
             res.status(400).json({ error: err });
         }
@@ -62,10 +62,10 @@ async function index(req, res) {
     //This populate the user when you find the posts
     //So you will have access to the  users information 
     //When you fetch the posts
-    try{
+    try {
         const posts = await Post.find({}).populate("user").exec();
         res.status(200).json({ posts })
-    }catch(err){
-        res.status(400).json({error: err });
+    } catch (err) {
+        res.status(400).json({ error: err });
     }
 }

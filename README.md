@@ -1,5 +1,9 @@
 # Fakebook Project
 
+ Fakebooks is a Shady Social Experience. A knockoff version of the popular 
+ social networking app, designed to mimic the appearance of the original but l
+ acking in genuine functionality and security.
+
 # Preview
 
 Signup Page

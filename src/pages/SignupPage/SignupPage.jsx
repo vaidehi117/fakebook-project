@@ -1,3 +1,4 @@
+import './SignupPage.css';
 import { useState } from "react";
 import userService from "../../utils/userService";
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
@@ -10,7 +11,7 @@ import {
     Message,
     Segment,
 } from "semantic-ui-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function SignUpPage({ handleSignUpOrLogin }) {
 
@@ -140,6 +141,9 @@ export default function SignUpPage({ handleSignUpOrLogin }) {
                         <Button type="submit" color='blue' className="btn" fluid size='large'>
                             Signup
                         </Button>
+                        <Message>
+                            Already have an account? <Link to="/login">Login</Link>
+                        </Message>
 
                     </Segment>
                     {error ? <ErrorMessage error={error} /> : null}

@@ -87,11 +87,11 @@ export default function ProfilePage({ user, handleLogout }) {
             </Grid.Row>
             <Grid.Row>
                 <Grid.Column>
-                    <ProfileBio user={userState} />
+                    <ProfileBio user={user}/>
                 </Grid.Column>
             </Grid.Row>
             <Grid.Row centered>
-                <Grid.Column style={{ maxWidth: 750 }}>
+                <Grid.Column style={{ maxWidth: 450 }}>
                     <PostGallery posts={posts} itemsPerRow={1} isProfile={true} user={user} addLike={addLike} removeLike={removeLike} />
                 </Grid.Column>
             </Grid.Row>

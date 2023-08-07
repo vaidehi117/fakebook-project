@@ -56,7 +56,7 @@ export default function LoginPage({ handleSignUpOrLogin }) {
         <Form size='large' onSubmit={handleSubmit}>
           <Segment stacked>
             <Form.Input
-              fluid icon='user'
+              fluid icon='user circle'
               iconPosition='left'
               type="email"
               name="email"

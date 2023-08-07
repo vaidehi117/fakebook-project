@@ -47,12 +47,9 @@ export default function PostCard({ post, isProfile, addLike, removeLike, user })
       <Card.Content extra textAlign={"right"}>
         <Icon name={"thumbs up"} size="large" color={likeColor} onClick={clickHandler} />
         {post.likes.length} Likes
-      </Card.Content>
-      <Card.Content extra textAlign={"right"}>
         <Icon name={"comments"} size="large" color='blue'/> Comments
-      </Card.Content>
-      <Card.Content extra textAlign={"right"}>
         <Icon name={"paper plane"} size="large" color='blue'/> Share
+        <Icon name={"bookmark outline"} size="large" color='blue'/> Save
       </Card.Content>
     </Card>
   );

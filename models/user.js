@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema(
 
     password: String,
     photoUrl: String, //String from aws!
-    Bio: {
+    bio: {
       type: String,
       required: true,
       lowercase: true,

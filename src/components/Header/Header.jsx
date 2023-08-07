@@ -8,7 +8,7 @@ export default function PageHeader({ user, handleLogout }) {
         <Link to="/">
           <Icon name="sign-out"></Icon>
         </Link>
-        <Link to="" onClick={handleLogout}>
+        <Link to="/login" onClick={handleLogout}>
           Logout
         </Link>
       </Header>

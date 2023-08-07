@@ -13,7 +13,7 @@ export function create(postId) {
 		}
 	}).then(responseFromTheServer => {
 		if (responseFromTheServer.ok) return responseFromTheServer.json() // 
-		throw new Error('Something went wrong in delete Like');
+		throw new Error('Something went wrong in create Like');
 	})
 }
 

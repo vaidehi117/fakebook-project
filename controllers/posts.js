@@ -55,7 +55,7 @@ function create(req, res) {
         } catch (err) {
             res.status(400).json({ error: err });
         }
-    });
+    });       
 }
 
 async function index(req, res) {

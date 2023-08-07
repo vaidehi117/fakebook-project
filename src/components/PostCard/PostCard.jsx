@@ -45,8 +45,11 @@ export default function PostCard({ post, isProfile, addLike, removeLike, user })
         <Card.Description>{post.caption}</Card.Description>
       </Card.Content>
       <Card.Content extra textAlign={"right"}>
-        <Icon name={"heart"} size="large" color={likeColor} onClick={clickHandler} />
+        <Icon name={"thumbs up"} size="large" color={likeColor} onClick={clickHandler} />
         {post.likes.length} Likes
+      </Card.Content>
+      <Card.Content extra textAlign={"right"}>
+        <Icon name={"paper plane"} size="large" />
       </Card.Content>
     </Card>
   );

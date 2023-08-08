@@ -19,7 +19,8 @@ Login Page
 - Link to Trollo Board(Project planning): https://trello.com/b/xYq3IG4b/project-3
 
 # Technologie Used:
-- Express server
+- Express 
+- Node JS
 - React 
 - Java Script
 - MongoDB

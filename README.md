@@ -23,8 +23,10 @@ Login Page
 - Node JS
 - React 
 - Java Script
+- AWS
 - MongoDB
 - Mongoose
+
 
 # Next Steps: 
 - Implement the comment for the post 

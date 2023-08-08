@@ -23,7 +23,7 @@ export default function PostCard({ post, isProfile, addLike, removeLike, user })
   const clickHandler = likedIndex > -1 ? () => removeLike(post.likes[likedIndex]._id) : () => addLike(post._id)
 
   return (
-    <Card key={post._id}>
+    <Card key={post._id} color='blue'>
       {isProfile ? null : (
         <Card.Content textAlign="left">
           <Image

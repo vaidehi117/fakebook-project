@@ -15,7 +15,7 @@ Login Page
 ![Alt text](<Screenshot from 2023-08-06 22-58-32.png>)
 
 # Getting Started
-- Link to deployed app: 
+- Link to deployed app: https://fakebook-notfacebook-117.onrender.com/
 - Link to Trollo Board(Project planning): https://trello.com/b/xYq3IG4b/project-3
 
 # Technologie Used:

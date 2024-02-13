@@ -1,8 +1,8 @@
 # Fakebook Project
 
  Fakebooks is a Shady Social Experience. A knockoff version of the popular 
- social networking app, designed to mimic the appearance of the original but l
- acking in genuine functionality and security.
+ social networking app, designed to mimic the appearance of the original but lacking 
+ in genuine functionality and security.
 
 # Preview
 
@@ -16,7 +16,7 @@ Login Page
 
 # Getting Started
 - Link to deployed app: https://fakebook-notfacebook-117.onrender.com/
-- Link to Trollo Board(Project planning): https://trello.com/b/xYq3IG4b/project-3
+- Link to Trello Board(Project planning): https://trello.com/b/xYq3IG4b/project-3
 
 # Technologie Used:
 - Express 
